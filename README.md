@@ -1,4 +1,4 @@
-### Crypto Tracker
+### Crypto Tracker 🚀
 
 **Crypto Tracker** is a web application built to help users monitor and track cryptocurrency prices in real-time. It provides a clean and intuitive interface to view key metrics such as price, 24-hour change, and market cap for various cryptocurrencies. The app is powered by **React**, **TanStack Query (React Query)**, and integrates with the **CoinGecko API** to fetch live cryptocurrency data.
 
