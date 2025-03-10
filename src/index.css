@@ -13,7 +13,7 @@
   }
 }
 
-@keyframes marquee {
+@keyframes color-anim {
   0% {
     transform: translateX(60%);
   }
@@ -27,7 +27,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 8s linear infinite;
+  animation: color-anim 8s linear infinite;
   display: inline-block;
   white-space: nowrap;
 }
