@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { CurrencyContext } from "../context/CurrencyContext";
+
 const Navbar = () => {
+  const { setCurrency } = useContext(CurrencyContext);
   return (
     <nav className="bg-gray-900/80 backdrop-blur-md border-b border-blue-600/20 sticky top-0 z-50 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,12 +35,18 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-2xl bg-gray-900/95 rounded-2xl w-56 border border-gray-800 backdrop-blur-xl"
               >
                 <li>
-                  <a className="hover:bg-blue-900/20 text-gray-300 px-4 py-3 rounded-lg transition-all duration-300 flex items-center gap-2">
+                  <a
+                    className="hover:bg-blue-900/20 text-gray-300 px-4 py-3 rounded-lg transition-all duration-300 flex items-center gap-2"
+                    onClick={() => setCurrency("usd")}
+                  >
                     $ USD
                   </a>
                 </li>
                 <li>
-                  <a className="hover:bg-blue-900/20 text-gray-300 px-4 py-3 rounded-lg transition-all duration-300 flex items-center gap-2">
+                  <a
+                    className="hover:bg-blue-900/20 text-gray-300 px-4 py-3 rounded-lg transition-all duration-300 flex items-center gap-2"
+                    onClick={() => setCurrency("inr")}
+                  >
                     ₹ INR
                   </a>
                 </li>

@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { fetchCoinData } from "../services/FetchCoinData";
 import { useQuery } from "@tanstack/react-query";
+import { CurrencyContext } from "../context/CurrencyContext";
 
 function CoinTable() {
+  const { currency } = useContext(CurrencyContext);
   const [page, setPage] = useState(1);
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["coins", page],
-    queryFn: () => fetchCoinData(page, "usd"),
+    queryKey: ["coins", page, currency],
+    queryFn: () => fetchCoinData(page, currency),
     gcTime: 1000 * 60 * 2,
     staleTime: 1000 * 60 * 2,
   });
@@ -61,7 +63,8 @@ function CoinTable() {
               </div>
 
               <div className="basis-[20%] font-medium text-gray-700">
-                ${coin.current_price.toLocaleString()}
+                {currency === "usd" ? "$" : "₹ "}
+                {coin.current_price.toLocaleString()}
               </div>
               <div className="basis-[20%]">
                 <div
@@ -104,7 +107,8 @@ function CoinTable() {
                 </div>
               </div>
               <div className="basis-[25%] font-medium text-gray-700">
-                ${coin.market_cap.toLocaleString()}
+                {currency === "usd" ? "$" : "₹ "}
+                {coin.market_cap.toLocaleString()}
               </div>
             </div>
           ))}
