@@ -18,6 +18,7 @@ const CoinTable = () => {
   });
 
   const handleCoinRedirect = (id) => {
+    // navigate("/details/", { state: { id: id } });
     navigate(`/details/${id}`);
   };
 
