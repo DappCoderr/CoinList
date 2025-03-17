@@ -1,9 +1,17 @@
 // import { useContext } from "react";
 // import { CurrencyContext } from "../context/CurrencyContext";
+import { useNavigate } from "react-router-dom";
 import currencyStore from "../store/currencyStore";
 
 const Navbar = () => {
   const { setCurrency } = currencyStore();
+
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+  };
+
   return (
     <nav className="bg-gray-900/80 backdrop-blur-md border-b border-blue-600/20 sticky top-0 z-50 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +67,10 @@ const Navbar = () => {
               <div className="w-9 h-9 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                 <span className="text-white font-mono text-sm">CT</span>
               </div>
-              <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span
+                onClick={goToHome}
+                className="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent cursor-pointer"
+              >
                 CoinTracker
               </span>
             </div>
