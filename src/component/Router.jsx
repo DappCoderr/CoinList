@@ -4,6 +4,7 @@ import { AdminLayout, MainLayout } from "../pages/Layout";
 import Admin from "../pages/Admin";
 import MyLoader from "./PageLoader";
 import ErrorBoundary from "./ErrorBoundry";
+import Error from "./Error";
 
 const Home = lazy(() => import("../pages/Home"));
 const CoinDetails = lazy(() => import("../pages/CoinDetails"));
@@ -34,6 +35,7 @@ const Router = () => {
             }
           />
         </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </ErrorBoundary>
   );
