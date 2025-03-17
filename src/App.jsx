@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CurrencyContext } from "./context/CurrencyContext";
-import Router from "./Routing/Router";
+import Router from "./component/Router";
 
 function App() {
   const [currency, setCurrency] = useState("usd");
