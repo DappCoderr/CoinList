@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import currencyStore from "../store/currencyStore";
 import { fetchCoinDetails } from "../services/FetchCoinDetails";
 
 const CoinDetails = () => {
   const { coinId } = useParams();
   //   const id = useLocation().state.id;
+
+  const { currency } = currencyStore();
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["coins", coinId],
@@ -90,8 +93,12 @@ const CoinDetails = () => {
               Current Price
             </h3>
             <p className="text-xl font-semibold text-gray-800">
-              $
-              {data?.market_data?.current_price?.usd?.toLocaleString() || "N/A"}
+              {currency === "usd" ? "$" : "₹ "}
+              {/* {coin.market_cap.toLocaleString()} */}
+              {currency === "usd"
+                ? data?.market_data?.current_price?.usd?.toLocaleString()
+                : data?.market_data?.current_price?.inr?.toLocaleString() ||
+                  "N/A"}
             </p>
           </div>
         </div>
