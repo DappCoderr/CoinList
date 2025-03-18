@@ -1,24 +1,17 @@
-import { lazy, useState } from "react";
-import { fetchCoinData } from "../services/FetchCoinData";
-import { useQuery } from "@tanstack/react-query";
-// import { CurrencyContext } from "../context/CurrencyContext";
+import { useState } from "react";
 import currencyStore from "../store/currencyStore";
-import { useNavigate } from "react-router-dom";
+import useFetchCoinData from "../hooks/useFetchCoinData";
 
 const CoinTable = () => {
-  const navigate = useNavigate();
-
   const { currency } = currencyStore();
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["coins", page, currency],
-    queryFn: () => fetchCoinData(page, currency),
-    gcTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2,
-  });
+
+  const { navigate, data, isLoading, isError, error } = useFetchCoinData(
+    page,
+    currency
+  );
 
   const handleCoinRedirect = (id) => {
-    // navigate("/details/", { state: { id: id } });
     navigate(`/details/${id}`);
   };
 
